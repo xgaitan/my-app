@@ -1,0 +1,67 @@
+{
+  "auth": {
+    "myappd56df19d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
+    }
+  },
+  "api": {
+    "myapp": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDate": "2022-02-23T21:45:06.638Z",
+              "description": ""
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authmyappd56df19d"
+              }
+            },
+            {
+              "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "OPENID_CONNECT",
+              "openIDConnectConfig": {
+                "name": "d2k3ts4pzpbrld",
+                "issuerUrl": "https://master.d2k3ts4pzpbrld.amplifyapp.com/",
+                "clientId": "",
+                "authTTL": "60000",
+                "iatTTL": "60000"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

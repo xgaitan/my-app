@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "myappd56df19d_identitypool_d56df19d",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "myappd56df19d",
+    "userPoolName": "myappd56df19d_userpool_d56df19d",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "myappdd56df19d_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "d56df19d",
+    "resourceName": "myappd56df19d",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "default",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "useEnabledMfas": false
+  }
+}

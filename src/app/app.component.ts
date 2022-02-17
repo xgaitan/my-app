@@ -1,7 +1,6 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {APIService, Restaurant} from "./API.service";
-import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: "app-root",
@@ -58,5 +57,15 @@ async ngOnInit() {
       .catch((e) => {
         console.log("error creating restaurant...", e);
       });
+  }
+}
+
+export class AppComponent implements OnInit, OnDestroy {
+  // ...
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = null;
   }
 }

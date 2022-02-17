@@ -1,6 +1,7 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {AmplifyUIAngularModule} from "@aws-amplify/ui-angular";
+
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
 /* new form imports */
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -10,11 +11,10 @@ import {AppComponent} from "./app.component";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
+  imports: [BrowserModule,
+    AmplifyAuthenticatorModule,
     AppRoutingModule,
-    AmplifyUIAngularModule,
-    /* configuring form modules */
+   /* configuring form modules */
     FormsModule,
     ReactiveFormsModule,
   ],

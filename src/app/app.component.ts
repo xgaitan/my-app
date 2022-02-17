@@ -7,12 +7,13 @@ import {APIService, Restaurant} from "./API.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-export class AppComponent implements OnInit {
-  title = "amplify-angular-app";
-  public createForm: FormGroup;
 
-  /* declare restaurants variable */
-  public restaurants: Array<Restaurant> = [];
+export class AppComponent implements OnInit, OnDestroy {
+  title = "amplify-angular-app";
+  public createForm: FormGroup; 
+
+   /* declare restaurants variable */
+   public restaurants: Array<Restaurant> = [];
 
   constructor(private api: APIService, private fb: FormBuilder) {
     this.createForm = this.fb.group({
@@ -22,30 +23,21 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private subscription: Subscription | null = null;
+  private subscription : Subscription | null = null;
 
-async ngOnInit() {
-  this.api.ListRestaurants().then(event => {
-    this.restaurants = event.items;
-  });
+  async ngOnInit() {
+    this.api.ListRestaurants().then(event => {
+      this.restaurant = event.items;
+    });
 
-  export class AppComponent implements OnInit, OnDestroy {
-    // ...
-    ngOnDestroy() {
-      if (this.subscription) {
-        this.subscription.unsubscribe();
-      }
-      this.subscription = null;
-    }
-
-  /* subscribe to new restaurants being created */
-  this.subscription = <Subscription>(
-    this.api.OnCreateRestaurantListener.subscribe((event: any) => {
-      const newRestaurant = event.value.data.onCreateRestaurant;
-      this.restaurants = [newRestaurant, ...this.restaurants];
-    })
-  );
-}
+    /* subscribe to new restaurants being created */
+    this.subscription = <Subscription>( 
+      this.api.OnCreateRestaurantListener.subscribe((event: any) => {
+        const newRestaurant = event.value.data.onCreateRestaurant;
+        this.restaurants = [newRestaurant, ...this.restaurants];
+      })
+    );
+  }
 
   public onCreate(restaurant: Restaurant) {
     this.api
@@ -58,10 +50,6 @@ async ngOnInit() {
         console.log("error creating restaurant...", e);
       });
   }
-}
-
-export class AppComponent implements OnInit, OnDestroy {
-  // ...
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
